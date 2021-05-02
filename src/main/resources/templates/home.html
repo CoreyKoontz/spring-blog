@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:fragment="head">
-    <meta charset="UTF-8" />
-    <title>Home</title>
-    <!-- include stylesheets, etc here -->
-</head>
+<header th:replace="partials/header :: header('home')"/>
 <body>
-<nav th:fragment="navbar">
-    <!-- awesome navbar goes here -->
-</nav>
+<nav th:replace="partials/navbar :: navbar"/>
+<h1>Home Page</h1>
+<footer th:replace="partials/footer :: footer"/>
 </body>
 </html>

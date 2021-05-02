@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:replace="partials/header :: header('home')"/>
 <body>
-<nav th:replace="partials :: navbar" />
+<nav th:replace="partials/navbar :: navbar"/>
 <h1>Welcome To My Site!</h1>
+<footer th:replace="partials/footer :: footer"/>
+
 </body>
+</html>
