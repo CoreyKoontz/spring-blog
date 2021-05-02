@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head th:replace="partials/header :: header('Roll-The-Dice')"/>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<header th:replace="partials/header :: header('roll dice')"/>
 <body>
-<nav th:replace="partials/navbar :: navbar"/>
+<nav th:replace="partials/navbar :: navbar"></nav>
     <h1>Pick a number: </h1>
 
     <form action="/roll-dice" method="post">
@@ -15,11 +14,11 @@
         <input type="submit" name="userInput" value="6" />
     </form>
 
-    <h2>You picked: <span th:text="${userInput}"></span></h2>
-    <h2>You rolled: <span th:text="${randomNumber}"></span></h2>
+    <h3>You picked: <span th:text="${userInput}"></span></h3>
+    <h3>You rolled: <span th:text="${randomNumber}"></span></h3>
 
-    <h2><span th:text="${isMatch}"></span></h2>
+    <h3><span th:text="${isMatch}"></span></h3>
 
-<!--<footer th:replace="partials/footer :: footer"/>-->
+<footer th:replace="partials/footer :: footer"/>
 </body>
 </html>
