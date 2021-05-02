@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<header th:replace="partials/header :: header('All Posts')"/>
+<body>
+
+<nav th:replace="partials/navbar :: navbar"/>
+
+<h1>Index</h1>
+
+<div class="row md-6 justify-content-around" th:each="post : ${posts}">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5  class="card-title"><span th:text="${post.getTitle()}"></span></h5>
+            <p th:text="${post.getBody()}" class="card-text"></p>
+            <a href="/show" class="card-link" th:value="${post.getId()}">Details</a>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="partials/footer :: footer"/>
+
+</body>
+</html>

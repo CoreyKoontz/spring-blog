@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<header th:replace="partials/header :: header('All Posts')"/>
+<header th:replace="partials/header :: header('Show')"/>
 <body>
 <nav th:replace="partials/navbar :: navbar"/>
-<h1>Index</h1>
+<h1>Show</h1>
+<div class="container">
+    <h2 th:text="${post.getTitle()}"></h2>
+    <p th:text="${post.getBody()}"></p>
+</div>
+
 <footer th:replace="partials/footer :: footer"/>
 </body>
 </html>
