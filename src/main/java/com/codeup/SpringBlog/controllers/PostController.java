@@ -21,9 +21,12 @@ public class PostController {
         return "post/index";
     }
 
-    @GetMapping("/show")
-    public String viewPost(@PathVariable int id, Model model) {
-        Post post = (Post) model.getAttribute("post-link");
+    // Need a getById method and DB to actually show the post details?
+    // Tried passing the post object as a path variable but didnt work.
+    @GetMapping("/post/show/{id}")
+    public String viewPost(@PathVariable("id") int id, Model model) {
+        model.addAttribute("id", id);
+        Post post = new Post(id, "showTitleText", "showBodyTest");
         model.addAttribute("post", post);
         return "post/show";
     }

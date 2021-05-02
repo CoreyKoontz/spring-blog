@@ -12,7 +12,7 @@
         <div class="card-body">
             <h5  class="card-title"><span th:text="${post.getTitle()}"></span></h5>
             <p th:text="${post.getBody()}" class="card-text"></p>
-            <a href="/show" class="card-link" th:value="${post.getId()}">Details</a>
+            <a th:href="@{/post/show/{id}(id = ${post.getId()})}">Details</a>
         </div>
     </div>
 </div>
