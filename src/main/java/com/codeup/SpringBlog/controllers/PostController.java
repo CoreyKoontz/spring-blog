@@ -1,6 +1,7 @@
 package com.codeup.SpringBlog.controllers;
 
-import com.codeup.SpringBlog.Post;
+import com.codeup.SpringBlog.models.Post;
+import com.codeup.SpringBlog.models.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +12,16 @@ import java.util.List;
 @Controller
 public class PostController {
 
+    // Dependency Injection: --------------------------------
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
+    }
+    // ------------------------------------------------------
+
     @GetMapping("/post")
-    public String post(Model model) {
+    public String index(Model model) {
         List<Post> posts = new ArrayList<>();
         posts.add(new Post(1, "title1", "body1"));
         posts.add(new Post(2, "title2", "body2"));

@@ -1,9 +1,22 @@
-package com.codeup.SpringBlog;
+package com.codeup.SpringBlog.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="posts") // Applies to entire table. Here we are just naming it
 public class Post {
 
+    @Id // PRIMARY KEY
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto incrementing
     private long id;
+
+    // @Column allows us to customize the data type and values
+    @Column(nullable = false, length = 100)// VARCHAR(100) NOT NULL
     private String title;
+
+    //@ColumnDefinition = "TEXT" - Would change the data type to TEXT instead of VARCHAR
+    // *** Be aware that ColumnDefinition may override other specifications
+    @Column(nullable = false /* , @ColumnDefinition = "TEXT"  */)// VARCHAR(255) NOT NULL
     private String body;
 
     public Post() {
