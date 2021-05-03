@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<header th:replace="partials/header :: header('All Posts')"/>
+<head th:replace="partials/head :: head('All Posts')"/>
 <body>
 
 <nav th:replace="partials/navbar :: navbar"/>
@@ -18,6 +18,6 @@
 </div>
 
 <footer th:replace="partials/footer :: footer"/>
-
+<th:block th:replace="partials/scripts :: scripts"/>
 </body>
 </html>

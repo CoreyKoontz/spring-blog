@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<header th:replace="partials/header :: header('home')"/>
+<head th:replace="partials/head :: head('home')"/>
 <nav th:replace="partials/navbar :: navbar"/>
 
 <body>
 <h1>Hello, <span th:text="${name}">World</span>!</h1>
 </body>
 <footer th:replace="partials/footer :: footer"/>
-
+<th:block th:replace="partials/scripts :: scripts"/>
 </html>
