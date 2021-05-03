@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head('home')"/>
 <nav th:replace="partials/navbar :: navbar"/>
-
+<header th:replace="partials/header :: header(Hello)"></header>
 <body>
 <h1>Hello, <span th:text="${name}">World</span>!</h1>
 </body>

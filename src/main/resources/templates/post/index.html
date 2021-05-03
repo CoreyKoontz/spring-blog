@@ -5,13 +5,13 @@
 
 <nav th:replace="partials/navbar :: navbar"/>
 
-<h1>Index</h1>
+<header th:replace="partials/header :: header(Index)"></header>
 
 <div class="row md-6 justify-content-around" th:each="post : ${posts}">
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5  class="card-title"><span th:text="${post.getTitle()}"></span></h5>
-            <p th:text="${post.getBody()}" class="card-text"></p>
+            <h5  class="card-title"><span th:text="${post.title}"></span></h5>
+            <p th:text="${post.title}" class="card-text"></p>
             <a th:href="@{/post/show/{id}(id = ${post.getId()})}">Details</a>
         </div>
     </div>

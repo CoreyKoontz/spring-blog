@@ -3,7 +3,8 @@
 <head th:replace="partials/head :: head('roll dice')"/>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-    <h1>Pick a number: </h1>
+
+    <header th:replace="partials/header :: header(Roll-The-Dice)"></header>
 
     <form action="/roll-dice" method="post">
        <input type="submit" name="userInput" value="1" />

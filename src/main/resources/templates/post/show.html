@@ -3,9 +3,10 @@
 <head th:replace="partials/head :: head('Show')"/>
 <body>
 <nav th:replace="partials/navbar :: navbar"/>
-<h1>Show</h1>
+<header th:replace="partials/header :: header(Show)"></header>
 <div class="container">
     <h3>This is the show page for the post with an ID of : <span th:text="${id}"></span></h3><br>
+
     <h3>Post Title: <span th:text="${post.title}"></span></h3><br>
     <p>Post Body: <span th:text="${post.body}"></span></p>
 </div>
