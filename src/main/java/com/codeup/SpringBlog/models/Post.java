@@ -8,6 +8,7 @@ public class Post {
 
     @Id // PRIMARY KEY
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto incrementing
+    @Column(columnDefinition = "INT UNSIGNED")
     private long id;
 
     // @Column allows us to customize the data type and values
