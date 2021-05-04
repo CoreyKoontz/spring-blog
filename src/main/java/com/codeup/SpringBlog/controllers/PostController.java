@@ -1,7 +1,7 @@
 package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Post;
-import com.codeup.SpringBlog.models.PostRepository;
+import com.codeup.SpringBlog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,22 +22,42 @@ public class PostController {
 
     @GetMapping("/post")
     public String index(Model model) {
-        List<Post> posts = new ArrayList<>();
-        posts.add(new Post(1, "title1", "body1"));
-        posts.add(new Post(2, "title2", "body2"));
-        posts.add(new Post(3, "title3", "body3"));
-        model.addAttribute("posts", posts);
+        model.addAttribute("posts", postDao.findAll());
         return "post/index";
     }
 
-    // Need a getById method and DB to actually show the post details?
-    // Tried passing the post object as a path variable but didnt work.
-    @GetMapping("/post/show/{id}")
-    public String viewPost(@PathVariable("id") int id, Model model) {
-        model.addAttribute("id", id);
-        Post post = new Post(id, "showTitleText", "showBodyTest");
-        model.addAttribute("post", post);
+
+    @GetMapping("/post/{id}/show")
+    public String viewPost(@PathVariable("id") long id, Model model) {
+        model.addAttribute("post", postDao.getOne(id));
         return "post/show";
+    }
+
+    // Deleting a post -----------------------------------------------------------
+
+    @PostMapping("/post/{id}/delete")
+    public String deletePost(@PathVariable("id") Long id) {
+        postDao.deleteById(id);
+        return "redirect:/post";
+    }
+
+    // Editing a post ------------------------------------------------------------
+
+    @GetMapping("post/{id}/edit")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        Post postToEdit = postDao.getOne(id);
+        model.addAttribute("post", postToEdit);
+        return "post/edit";
+    }
+
+    @PostMapping("/post/{id}/edit")
+    public String update(
+            @PathVariable("id") long id,
+            @RequestParam String title,
+            @RequestParam String body){
+        Post postToUpdate = new Post(id, title, body);
+        postDao.save(postToUpdate);
+        return "redirect:/post";
     }
 
     @GetMapping("/post/create")

@@ -12,15 +12,20 @@ public class Post {
     private long id;
 
     // @Column allows us to customize the data type and values
-    @Column(nullable = false, length = 100)// VARCHAR(100) NOT NULL
+    @Column(nullable = false, length = 200)// VARCHAR(200) NOT NULL
     private String title;
 
     //@ColumnDefinition = "TEXT" - Would change the data type to TEXT instead of VARCHAR
     // *** Be aware that ColumnDefinition may override other specifications
-    @Column(nullable = false /* , @ColumnDefinition = "TEXT"  */)// VARCHAR(255) NOT NULL
+    @Column(columnDefinition = "TEXT NOT NULL")
     private String body;
 
     public Post() {
+    }
+
+    public Post( String title, String body) {
+        this.title = title;
+        this.body = body;
     }
 
     public Post(long id, String title, String body) {
