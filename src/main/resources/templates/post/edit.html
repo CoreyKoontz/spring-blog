@@ -7,10 +7,30 @@
 <header th:replace="partials/header :: header(Edit-Post)"></header>
 <div class="container">
 <form th:action="'/post/' + ${id} + '/edit'" th:method="POST">
+
     <label for="title">Title:</label>
     <input id="title" type="text" name="title" th:value="${post.title}">
+    <br>
+
     <label for="body">Body:</label>
     <textarea id="body" name="body" th:text="${post.body}"/>
+    <br>
+
+    <label for="topic">Post Topic Description:</label>
+    <input type="text" id="topic" name="topicDescription" th:value="${post.postDetails.topicDescription}">
+    <br>
+
+    <label for="history">History of Post:</label>
+    <textarea name="historyOfPost" id="history" th:text="${post.postDetails.historyOfPost}"></textarea>
+    <br>
+
+    <h4>Is it Awesome?</h4> <!-- How do I set this value by default as its current value -->
+    <label for="is-awesome">Yes</label>
+    <input id="is-awesome" type="radio" name="isAwesome" value=true>
+    <label for="is-not-Awesome">No</label>
+    <input id="is-not-Awesome" type="radio" name="isAwesome" value=false>
+    <br>
+
     <button type="submit">Submit Changes to <span th:text="${post.title}"/> post?</button>
 </form>
     <form th:action="'/post/' + ${post.id} + '/delete'"></form>

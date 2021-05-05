@@ -7,6 +7,9 @@
 <div class="container">
     <h3>Post Title: <span th:text="${post.title}"></span></h3><br>
     <p>Post Body: <span th:text="${post.body}"></span></p>
+    <p>Post Topic Description: <span th:text="${post.postDetails.topicDescription}"></span></p>
+    <p>History of Post <span th:text="${post.postDetails.historyOfPost}"></span></p>
+    <h1><span th:text="${isAwesome}"></span></h1>
 </div>
 
 <footer th:replace="partials/footer :: footer"/>

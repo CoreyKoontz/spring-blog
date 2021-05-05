@@ -38,6 +38,12 @@ public class Post {
         this.body = body;
     }
 
+    public Post(String title, String body, PostDetails postDetails) {
+        this.title = title;
+        this.body = body;
+        this.postDetails = postDetails;
+    }
+
     public Post(long id, String title, String body, PostDetails postDetails) {
         this.id = id;
         this.title = title;
@@ -67,5 +73,13 @@ public class Post {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public PostDetails getPostDetails() {
+        return postDetails;
+    }
+
+    public void setPostDetails(PostDetails postDetails) {
+        this.postDetails = postDetails;
     }
 }
