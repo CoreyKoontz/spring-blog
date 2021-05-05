@@ -3,7 +3,7 @@ package com.codeup.SpringBlog.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "dogs", uniqueConstraints = @UniqueConstraint(name = "UK_name_AND_reside_state", columnNames = {"name", "resideState"}))
+@Table(name = "dogs_mini_exercise", uniqueConstraints = @UniqueConstraint(name = "UK_name_AND_reside_state", columnNames = {"name", "resideState"}))
 public class Dog {
 
     @Id

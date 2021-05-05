@@ -20,6 +20,9 @@ public class Post {
     @Column(columnDefinition = "TEXT NOT NULL")
     private String body;
 
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private PostDetails postDetails;
+
     public Post() {
     }
 
