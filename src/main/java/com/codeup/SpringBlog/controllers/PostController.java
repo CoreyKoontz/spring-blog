@@ -1,6 +1,7 @@
 package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Post;
+import com.codeup.SpringBlog.repositories.PostDetailsRepository;
 import com.codeup.SpringBlog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,13 @@ public class PostController {
 
     // Dependency Injection: --------------------------------
     private final PostRepository postDao;
+    private final PostDetailsRepository postDetailsDao;
 
-    public PostController(PostRepository postDao) {
+    public PostController(PostRepository postDao, PostDetailsRepository postDetailsDao) {
         this.postDao = postDao;
+        this.postDetailsDao = postDetailsDao;
     }
+
     // ------------------------------------------------------
 
     @GetMapping("/post")
@@ -61,9 +65,8 @@ public class PostController {
     }
 
     @GetMapping("/post/create")
-    @ResponseBody
     public String createPostForm() {
-        return "View form for creating a post";
+        return "post/create";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)

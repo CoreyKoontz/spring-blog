@@ -20,8 +20,9 @@ public class Post {
     @Column(columnDefinition = "TEXT NOT NULL")
     private String body;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private PostDetails postDetails;
+    // One-To-One Relationship to post_details
+    @OneToOne(cascade = CascadeType.ALL)
+    private PostDetails postDetails;
 
     public Post() {
     }
@@ -35,6 +36,13 @@ public class Post {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public Post(long id, String title, String body, PostDetails postDetails) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.postDetails = postDetails;
     }
 
     public String getTitle() {
