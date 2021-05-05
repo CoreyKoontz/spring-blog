@@ -11,7 +11,10 @@
     <p>History of Post <span th:text="${post.postDetails.historyOfPost}"></span></p>
     <h1><span th:text="${isAwesome}"></span></h1>
 </div>
-
+<div class="container">
+    <form th:action="'/post/' + ${post.id} + '/edit'"><button>Edit</button></form>
+    <form th:action="'/post/' + ${post.id} + '/delete'" th:method="POST"><button>Delete</button></form>
+</div>
 <footer th:replace="partials/footer :: footer"/>
 <th:block th:replace="partials/scripts :: scripts"/>
 </body>

@@ -13,9 +13,6 @@
             <h5  class="card-title"><span th:text="${post.title}"></span></h5>
             <p th:text="${post.body}" class="card-text"></p>
             <form th:action="'/post/' + ${post.id} + '/show'"><button>Details</button></form>
-            <form th:action="'/post/' + ${post.id} + '/edit'"><button>Edit</button></form>
-<!--            <a th:href="@{/post/show/{id}(id = ${post.id})}">Details</a>-->
-<!--            <a th:href="@{/post/edit/{id}(id = ${post.id})}"> Edit</a>-->
         </div>
     </div>
 </div>
