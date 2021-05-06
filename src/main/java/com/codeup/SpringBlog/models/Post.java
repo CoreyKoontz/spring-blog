@@ -34,6 +34,10 @@ public class Post {
     )
     private List<PostImage> postImages;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     // ------------------------------------------------------ Constructors:
     public Post() {
     }
@@ -67,6 +71,21 @@ public class Post {
         this.body = body;
         this.postDetails = postDetails;
         this.postImages = postImages;
+    }
+
+    public Post(String title, String body, PostDetails postDetails, User user) {
+        this.title = title;
+        this.body = body;
+        this.postDetails = postDetails;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getTitle() {

@@ -10,6 +10,7 @@
     <p>Post Topic Description: <span th:text="${post.postDetails.topicDescription}"></span></p>
     <p>History of Post: <span th:text="${post.postDetails.historyOfPost}"></span></p>
     <h1><span th:text="${isAwesome}"></span></h1>
+    <h3>User Email: <span th:text="${post.user.email}"></span> </h3>
 </div>
 <div class="container">
     <form th:action="'/post/' + ${post.id} + '/edit'"><button>Edit</button></form>

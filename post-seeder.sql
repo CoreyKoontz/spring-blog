@@ -1,9 +1,9 @@
 use springblog_db;
 
 truncate post_images;
-truncate posts;
-truncate post_details;
 
+truncate post_details;
+truncate posts;
 insert into post_details (history_of_post, is_awesome, topic_description) values
 ('Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim.', true, 'Cat, european wild'),
 ('In est risus, auctor sed, tristique in, tempus sit amet, sem.', true, 'Asian water buffalo'),
@@ -15,7 +15,7 @@ insert into post_details (history_of_post, is_awesome, topic_description) values
 ('Nam dui.', true, 'Burmese black mountain tortoise');
 
 insert into post_images (image_title, url, post_id) values
-('black cat', 'https://images.pexels.com/photos/37337/cat-silhouette-cats-silhouette-cat-s-eyes.jpg?cs=srgb&dl=pexels-pixabay-37337.jpg&fm=jpg', 1)
+('black cat', 'https://images.pexels.com/photos/37337/cat-silhouette-cats-silhouette-cat-s-eyes.jpg?cs=srgb&dl=pexels-pixabay-37337.jpg&fm=jpg', 1);
 
 insert into posts ( title, body, post_details_id) values
 ('Cat Post', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.', 1),
@@ -28,6 +28,6 @@ insert into posts ( title, body, post_details_id) values
 Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.', 7),
 ('Allegro', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 8);
 
-
+insert into users (email, password, username) values ('test@email.com', 'password', 'testusername');
 
 

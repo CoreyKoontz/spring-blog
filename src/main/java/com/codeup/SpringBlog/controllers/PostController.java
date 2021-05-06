@@ -2,14 +2,13 @@ package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Post;
 import com.codeup.SpringBlog.models.PostDetails;
+import com.codeup.SpringBlog.models.User;
 import com.codeup.SpringBlog.repositories.PostDetailsRepository;
 import com.codeup.SpringBlog.repositories.PostRepository;
+import com.codeup.SpringBlog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class PostController {
@@ -17,10 +16,12 @@ public class PostController {
     // -------------------------------- Dependency Injection
     private final PostRepository postDao;
     private final PostDetailsRepository postDetailsDao;
+    private final UserRepository userDao;
 
-    public PostController(PostRepository postDao, PostDetailsRepository postDetailsDao) {
+    public PostController(PostRepository postDao, PostDetailsRepository postDetailsDao, UserRepository userDao) {
         this.postDao = postDao;
         this.postDetailsDao = postDetailsDao;
+        this.userDao = userDao;
     }
 
     // ------------------------------------------------------ All Post
@@ -94,12 +95,15 @@ public class PostController {
             @RequestParam String body,
             @RequestParam Boolean isAwesome,
             @RequestParam String historyOfPost,
-            @RequestParam String topicDescription) {
+            @RequestParam String topicDescription,
+            User user) {
+        User testUser = userDao.getOne(1L); // Just for testing. Will remove later.
         Post postToInsert = new Post(
                 title,
                 body,
-                new PostDetails(isAwesome, historyOfPost, topicDescription
-                ));
+                new PostDetails(isAwesome, historyOfPost, topicDescription),
+                testUser
+        );
         postDao.save(postToInsert);
         return "redirect:/post";
     }
