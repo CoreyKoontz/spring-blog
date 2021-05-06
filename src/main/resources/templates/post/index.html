@@ -7,8 +7,9 @@
 
 <header th:replace="partials/header :: header(Index)"></header>
 
-<div class="row md-6 justify-content-around" th:each="post : ${posts}">
-    <div class="card" style="width: 18rem;">
+
+<div class="row md-6 justify-content-around">
+    <div class="card m-2" style="width: 18rem;" th:each="post : ${posts}">
         <div class="card-body">
             <h5  class="card-title"><span th:text="${post.title}"></span></h5>
             <p th:text="${post.body}" class="card-text"></p>
@@ -16,6 +17,7 @@
         </div>
     </div>
 </div>
+
 
 <footer th:replace="partials/footer :: footer"/>
 <th:block th:replace="partials/scripts :: scripts"/>
