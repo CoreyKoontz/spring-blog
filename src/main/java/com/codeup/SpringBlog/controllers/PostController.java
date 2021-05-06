@@ -33,17 +33,19 @@ public class PostController {
     }
 
     // ------------------------------------------------------ Single post details
-    // ----- ??? How can we create a seeder for post with foreign keys ??? -----
+
     @GetMapping("/post/{id}/show")
     public String viewPost(@PathVariable("id") long id, Model model) {
         Post post = postDao.getOne(id);
-        PostDetails details = post.getPostDetails();
         model.addAttribute("post", post);
-        if (details.isAwesome()){
+
+        if (post.getPostDetails().isAwesome()){
             model.addAttribute("isAwesome", "Awesome!");
         } else {
             model.addAttribute("isAwesome", "Not so awesome");
         }
+
+
         return "post/show";
     }
     //(adsDao.getOne(1L).getAdDetails().getExtraStr())
