@@ -1,11 +1,13 @@
 package com.codeup.SpringBlog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="posts") // Applies to entire table. Here we are just naming it
+@Table(name = "posts") // Applies to entire table. Here we are just naming it
 public class Post {
 
+    // ------------------------------------------------------ Fields/Properties:
     @Id // PRIMARY KEY
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto incrementing
     @Column(columnDefinition = "INT UNSIGNED")
@@ -24,10 +26,19 @@ public class Post {
     @OneToOne(cascade = CascadeType.ALL)
     private PostDetails postDetails;
 
+    // One-To-Many Relationship to post_images
+    @OneToMany(
+            cascade = CascadeType.ALL, // allows us to CRUD images through posts
+            mappedBy = "post", // Prevents the unneeded mapping table
+            orphanRemoval = true // removes an image that has no owner
+    )
+    private List<PostImage> postImages;
+
+    // ------------------------------------------------------ Constructors:
     public Post() {
     }
 
-    public Post( String title, String body) {
+    public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
@@ -49,6 +60,13 @@ public class Post {
         this.title = title;
         this.body = body;
         this.postDetails = postDetails;
+    }
+
+    public Post(String title, String body, PostDetails postDetails, List<PostImage> postImages) {
+        this.title = title;
+        this.body = body;
+        this.postDetails = postDetails;
+        this.postImages = postImages;
     }
 
     public String getTitle() {
@@ -81,5 +99,13 @@ public class Post {
 
     public void setPostDetails(PostDetails postDetails) {
         this.postDetails = postDetails;
+    }
+
+    public List<PostImage> getPostImages() {
+        return postImages;
+    }
+
+    public void setPostImages(List<PostImage> postImages) {
+        this.postImages = postImages;
     }
 }
