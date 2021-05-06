@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 public class PostController {
 
-    // Dependency Injection: --------------------------------
+    // -------------------------------- Dependency Injection
     private final PostRepository postDao;
     private final PostDetailsRepository postDetailsDao;
 

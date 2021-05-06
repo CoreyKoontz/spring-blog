@@ -7,18 +7,17 @@
 
 <header th:replace="partials/header :: header(Index)"></header>
 
-<div class="row md-6 justify-content-around" th:each="post : ${posts}">
-    <div class="card" style="width: 18rem;">
+
+<div class="row md-6 justify-content-around">
+    <div class="card m-2" style="width: 18rem;" th:each="post : ${posts}">
         <div class="card-body">
             <h5  class="card-title"><span th:text="${post.title}"></span></h5>
             <p th:text="${post.body}" class="card-text"></p>
             <form th:action="'/post/' + ${post.id} + '/show'"><button>Details</button></form>
-            <form th:action="'/post/' + ${post.id} + '/edit'"><button>Edit</button></form>
-<!--            <a th:href="@{/post/show/{id}(id = ${post.id})}">Details</a>-->
-<!--            <a th:href="@{/post/edit/{id}(id = ${post.id})}"> Edit</a>-->
         </div>
     </div>
 </div>
+
 
 <footer th:replace="partials/footer :: footer"/>
 <th:block th:replace="partials/scripts :: scripts"/>
