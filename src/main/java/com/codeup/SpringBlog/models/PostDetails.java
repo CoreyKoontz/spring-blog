@@ -17,7 +17,7 @@ public class PostDetails {
     @Column(columnDefinition = "TEXT NOT NULL")
     private String historyOfPost;
 
-    @Column(nullable = false)
+    @Column
     private String topicDescription;
 
     public PostDetails() {
@@ -44,11 +44,11 @@ public class PostDetails {
         this.id = id;
     }
 
-    public boolean isAwesome() {
+    public boolean getIsAwesome() {
         return isAwesome;
     }
 
-    public void setAwesome(boolean awesome) {
+    public void setIsAwesome(boolean awesome) {
         isAwesome = awesome;
     }
 

@@ -39,7 +39,7 @@ public class PostController {
         Post post = postDao.getOne(id);
         model.addAttribute("post", post);
 
-        if (post.getPostDetails().isAwesome()){
+        if (post.getPostDetails().getIsAwesome()) {
             model.addAttribute("isAwesome", "Awesome!");
         } else {
             model.addAttribute("isAwesome", "Not so awesome");
@@ -87,24 +87,22 @@ public class PostController {
 
     // ------------------------------------------------------ Creating a post
     @GetMapping("/post/create")
-    public String createPostForm() {
+    public String createPostForm(Model model) {
+//        model.addAttribute("post", new Post()); // added this for form model binding
+        model.addAttribute("postDetails", new PostDetails());
         return "post/create";
     }
 
     @PostMapping("/post/create")
     public String createPost(
+            @ModelAttribute PostDetails postDetails,
             @RequestParam String title,
-            @RequestParam String body,
-            @RequestParam Boolean isAwesome,
-            @RequestParam String historyOfPost,
-            @RequestParam String topicDescription,
-            User user) {
-        User testUser = userDao.getOne(1L); // Just for testing. Will remove later.
+            @RequestParam String body
+    ) {
         Post postToInsert = new Post(
                 title,
                 body,
-                new PostDetails(isAwesome, historyOfPost, topicDescription),
-                testUser
+                postDetails
         );
         postDao.save(postToInsert);
         return "redirect:/post";

@@ -16,24 +16,27 @@
         <textarea id="body" name="body"></textarea>
         <br>
 
+        <form th:action="@{post/create}" th:method="post" th:object="${postDetails}">
+
         <h4>Is it Awesome?</h4>
         <label for="is-awesome">Yes</label>
-        <input id="is-awesome" type="radio" name="isAwesome" value=true>
+        <input id="is-awesome" type="radio" th:field="*{isAwesome}" value=true>
         <label for="is-not-Awesome">No</label>
-        <input id="is-not-Awesome" type="radio" name="isAwesome" value=false>
+        <input id="is-not-Awesome" type="radio" th:field="*{isAwesome}" value=false>
         <br>
 
         <label for="historyOfPost">History of Post:</label>
         <br>
-        <textarea id="historyOfPost" name="historyOfPost"></textarea>
+        <textarea id="historyOfPost" th:field="*{historyOfPost}"></textarea>
         <br>
 
         <label for="topicDescription">Topic Description:</label>
         <br>
-        <input id="topicDescription" type="text" name="topicDescription">
+        <input id="topicDescription" type="text" th:field="*{topicDescription}">
         <br>
+            <button type="submit">Create Post!</button>
+    </form>
 
-        <button type="submit">Create Post!</button>
     </form>
 </div>
 <footer th:replace="partials/footer :: footer"/>
