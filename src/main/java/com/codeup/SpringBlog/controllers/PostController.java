@@ -6,6 +6,7 @@ import com.codeup.SpringBlog.models.User;
 import com.codeup.SpringBlog.repositories.PostDetailsRepository;
 import com.codeup.SpringBlog.repositories.PostRepository;
 import com.codeup.SpringBlog.repositories.UserRepository;
+import com.codeup.SpringBlog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,13 @@ public class PostController {
     private final PostRepository postDao;
     private final PostDetailsRepository postDetailsDao;
     private final UserRepository userDao;
+    private final EmailService emailService;
 
-    public PostController(PostRepository postDao, PostDetailsRepository postDetailsDao, UserRepository userDao) {
+    public PostController(PostRepository postDao, PostDetailsRepository postDetailsDao, UserRepository userDao, EmailService emailService) {
         this.postDao = postDao;
         this.postDetailsDao = postDetailsDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
     // ------------------------------------------------------ All Post
@@ -99,12 +102,15 @@ public class PostController {
             @RequestParam String title,
             @RequestParam String body
     ) {
+        User user = userDao.getOne(1L);
         Post postToInsert = new Post(
                 title,
                 body,
-                postDetails
+                postDetails,
+                user
         );
         postDao.save(postToInsert);
+        emailService.prepareAndSend( postToInsert, "TEST SUBJECT", "TEST BODY");
         return "redirect:/post";
     }
 }
