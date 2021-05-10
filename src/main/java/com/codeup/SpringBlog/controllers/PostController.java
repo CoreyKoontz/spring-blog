@@ -7,6 +7,7 @@ import com.codeup.SpringBlog.repositories.PostDetailsRepository;
 import com.codeup.SpringBlog.repositories.PostRepository;
 import com.codeup.SpringBlog.repositories.UserRepository;
 import com.codeup.SpringBlog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -102,7 +103,7 @@ public class PostController {
             @RequestParam String title,
             @RequestParam String body
     ) {
-        User user = userDao.getOne(1L);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post postToInsert = new Post(
                 title,
                 body,
