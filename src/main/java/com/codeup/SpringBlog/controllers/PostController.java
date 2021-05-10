@@ -110,7 +110,7 @@ public class PostController {
                 user
         );
         postDao.save(postToInsert);
-        emailService.prepareAndSend( postToInsert, "TEST SUBJECT", "TEST BODY");
+        emailService.prepareAndSend( postToInsert, title, body);
         return "redirect:/post";
     }
 }
