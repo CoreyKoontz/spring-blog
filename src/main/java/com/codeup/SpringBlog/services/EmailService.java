@@ -20,7 +20,7 @@ public class EmailService {
     public void prepareAndSend(Post post, String subject, String body) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
-        msg.setTo("b76556ec3a-307d00@inbox.mailtrap.io");
+        msg.setTo(post.getUser().getEmail());
         msg.setSubject(subject);
         msg.setText(body);
 

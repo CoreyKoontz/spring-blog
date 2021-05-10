@@ -27,6 +27,13 @@ public class User {
     public User() {
     }
 
+    public User(User copy) {
+        id = copy.id;
+        username = copy.username;
+        email = copy.email;
+        password = copy.password;
+    }
+
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
