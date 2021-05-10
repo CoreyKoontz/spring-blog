@@ -1,0 +1,10 @@
+body {
+    background-color: lightblue;
+}
+footer {
+    color: white;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
