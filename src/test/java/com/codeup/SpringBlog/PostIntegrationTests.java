@@ -81,7 +81,9 @@ public class PostIntegrationTests {
         assertNotNull(httpSession);
     }
 
-    // **** Have to go back and refactor DB so that the post table includes the details. not two separate tables
+    // **** Have to go back and refactor DB so that the post table includes the details. Not two separate tables
+    // **** Update and Delete test require post creation and will not work until this is resolved
+
 //    @Test
 //    public void testCreatePost() throws Exception {
 //        PostDetails postDetails = new PostDetails(true, "history of post test", "test description");

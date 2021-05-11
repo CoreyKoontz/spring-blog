@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Sign up</title>
-</head>
+<head th:replace="partials/head :: head('Sign Up!')"/>
 <body>
-<h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+<nav th:replace="partials/navbar :: navbar"/>
+<header th:replace="partials/header :: header('Sign Up!')"></header>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Create an Account!</h5>
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+                    <form th:action="@{/sign-up}" method="POST" th:object="${user}">
 
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
+                        <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" class="form-control" th:field="*{username}" required autofocus/>
+                        </div>
 
-    <input value="Sign me up!" type="submit" />
-</form>
+                        <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" class="form-control" th:field="*{email}" required autofocus/>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" class="form-control" type="password" th:field="*{password}" required autofocus/>
+                        </div>
+
+                        <input class="btn btn-primary btn-block" value="Sign me up!" type="submit"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="partials/footer :: footer"/>
 </body>
 </html>
