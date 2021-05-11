@@ -19,10 +19,10 @@
                     <h5 class="card-title text-center">Sign In</h5>
                     <form th:action="@{/login}" method="post" class="text-center">
                         <div class="form-group">
-                            <input type="text" name="username" class="form-control" id="username" placeholder="username" autofocus>
+                            <input type="text" name="username" class="form-control" id="username" placeholder="username" required autofocus>
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" id="password" placeholder="password" autofocus>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="password" required autofocus>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
                         <footer th:replace="partials/footer :: footer"/>
