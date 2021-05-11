@@ -23,7 +23,7 @@ public class Post {
     private String body;
 
     // One-To-One Relationship to post_details
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL )
     private PostDetails postDetails;
 
     // One-To-Many Relationship to post_images

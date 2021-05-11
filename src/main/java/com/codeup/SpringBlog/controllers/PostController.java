@@ -28,7 +28,7 @@ public class PostController {
         this.emailService = emailService;
     }
 
-    // ------------------------------------------------------ All Post
+    // ------------------------------------------------------ View all Post
 
     @GetMapping("/post")
     public String index(Model model) {
@@ -36,7 +36,7 @@ public class PostController {
         return "post/index";
     }
 
-    // ------------------------------------------------------ Single post details
+    // ------------------------------------------------------ View single post details
 
     @GetMapping("/post/{id}/show")
     public String viewPost(@PathVariable("id") long id, Model model) {
