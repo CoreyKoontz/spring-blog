@@ -1,7 +1,6 @@
 package com.codeup.SpringBlog;
 
 import com.codeup.SpringBlog.models.Post;
-import com.codeup.SpringBlog.models.PostDetails;
 import com.codeup.SpringBlog.models.User;
 import com.codeup.SpringBlog.repositories.PostRepository;
 import com.codeup.SpringBlog.repositories.UserRepository;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -83,6 +81,7 @@ public class PostIntegrationTests {
         assertNotNull(httpSession);
     }
 
+    // **** Have to go back and refactor DB so that the post table includes the details. not two separate tables
 //    @Test
 //    public void testCreatePost() throws Exception {
 //        PostDetails postDetails = new PostDetails(true, "history of post test", "test description");
@@ -112,11 +111,11 @@ public class PostIntegrationTests {
     public void testPostIndex() throws Exception {
         Post existingPost = postDao.findAll().get(0);
 
-        // Makes a Get request to /ads and verifies that we get some of the static text of the ads/index.html template and at least the title from the first Ad is present in the template.
+        // Makes a Get request to /post and verifies that we get some of the static text of the post/index.html template and at least the title from the first Ad is present in the template.
         this.mvc.perform(get("/post"))
                 .andExpect(status().isOk())
                 // Test the static content of the page
-                .andExpect(content().string(containsString("Latest ads")))
+                .andExpect(content().string(containsString("Index")))
                 // Test the dynamic content of the page
                 .andExpect(content().string(containsString(existingPost.getTitle())));
     }
