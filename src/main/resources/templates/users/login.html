@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Log In</title>
-</head>
+<head th:replace="partials/head :: head('Login')"/>
 <body>
-<h1>Log In</h1>
+<nav th:replace="partials/navbar :: navbar"/>
+<header th:replace="partials/header :: header(Login)"></header>
+
 <div th:if="${param.error}">
     Invalid Username and Password.
 </div>
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
-
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign In</h5>
+                    <form th:action="@{/login}" method="post" class="text-center">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="username" placeholder="username" required autofocus>
+                        </div>
+                        <div class="form-group w-100">
+                            <input type="password" class="form-control" id="password" placeholder="password" autofocus>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <footer th:replace="partials/footer :: footer"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="partials/footer :: footer"/>
 </body>
-</html>
