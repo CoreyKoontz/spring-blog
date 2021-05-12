@@ -8,3 +8,7 @@ footer {
 * {
     font-family: 'Roboto', sans-serif;
 }
+
+.form-group{
+    background-color: lightblue;
+}
