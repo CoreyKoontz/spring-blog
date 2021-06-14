@@ -5,9 +5,18 @@ body {
     background-size: cover;
 }
 footer {
-    color: white;
+    color: #eec170;
+    background:transparent !important;
 }
 
 * {
     font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    background:transparent !important;
+    color: #eec170;
+}
+.nav-item {
+    color: #B7CAEB;
 }
